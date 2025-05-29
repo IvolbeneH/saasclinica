@@ -9,8 +9,10 @@ import { LoginForm } from "./components/login-form";
 
 export default function Authentication() {
   return (
-    <div className="flex h-screen w-screen items-center justify-center">
-      <AnimatedTabs defaultValue="account" className="w-[400px]">
+    <div className="relative flex h-screen w-screen items-center justify-center">
+      <div className="absolute inset-0 bg-[url('/background.png')] bg-cover bg-center bg-no-repeat blur-sm" />
+      <div className="absolute inset-0 bg-black/50" />
+      <AnimatedTabs defaultValue="login" className="relative z-10 w-[400px]">
         <AnimatedTabsList className="grid w-full grid-cols-2">
           <AnimatedTabsTrigger value="login">Login</AnimatedTabsTrigger>
           <AnimatedTabsTrigger value="register">
