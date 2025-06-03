@@ -6,8 +6,18 @@ import {
 } from "@/components/ui/animated-tabs";
 import { SignUpForm } from "./components/sign-up-form";
 import { LoginForm } from "./components/login-form";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 
-export default function Authentication() {
+export default async function Authentication() {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  });
+
+  if (session?.user) {
+    redirect("/dashboard");
+  }
   return (
     <div className="relative flex h-screen w-screen items-center justify-center">
       <div className="absolute inset-0 bg-[url('/background.png')] bg-cover bg-center bg-no-repeat blur-sm" />
